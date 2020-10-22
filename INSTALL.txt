@@ -1,0 +1,22 @@
+REQUIREMENTS
+ - Docker
+ - Docker-compose
+
+INSTALLATION
+
+1. Download and install Docker (https://docs.docker.com/engine/install/).
+2. Download and install Docker compose (https://docs.docker.com/compose/install/)
+3. In test_project/ dir run "docker-compose up -d --build"
+
+NOOTES
+
+ - Create superuser:
+    Run command "docker exec -it api python3 manage.py createsuperuser"
+    Log in with new credentials to the admin panel: "http://127.0.0.1:8000/admin"
+
+ - Check api container logs
+    "docker logs -f api"
+
+ - Enter the api container with bash
+    "docker exec -it api bash"
+

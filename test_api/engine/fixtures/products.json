@@ -1,0 +1,29 @@
+[
+  {
+    "model": "engine.products",
+    "pk": 1,
+    "fields": {
+      "name": "Lemons",
+      "production_date": "2020-09-01",
+      "price": 25.99
+    }
+  },
+  {
+    "model": "engine.products",
+    "pk": 2,
+    "fields": {
+      "name": "Red Apples",
+      "production_date": "2020-10-15",
+      "price": 68.99
+    }
+  },
+  {
+    "model": "engine.products",
+    "pk": 3,
+    "fields": {
+      "name": "Bananas",
+      "production_date": "2020-09-15",
+      "price": 29.99
+    }
+  }
+]

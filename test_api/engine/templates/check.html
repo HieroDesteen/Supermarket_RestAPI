@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cashier Check</title>
+</head>
+<body>
+<a>Order date: </a>{{ created_at }}<br>
+<table border="1">
+    <tr>
+        <td>Product</td>
+        {% if is_discounted %}
+            <td>Price with discount</td>
+        {% else %}
+            <td>Price</td>
+        {% endif %}
+    </tr>
+    <tr>
+        <td>{{ product.name }}</td>
+        <td>{{ total_price }}</td>
+    </tr>
+</table>
+<br><b>Total: </b>{{ total_price }}<br>
+Date of check printing: {% now "jS F Y H:i" %}
+</body>
+</html>

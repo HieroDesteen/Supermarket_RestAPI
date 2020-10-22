@@ -1,0 +1,37 @@
+version: "3.2"
+
+services:
+  engine_db:
+    container_name: api_db
+    image: postgres:10-alpine
+    networks:
+      default:
+        aliases:
+          - db
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_DB: test_db
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  api:
+    container_name: api
+    image: api
+    restart: always
+    depends_on:
+      - engine_db
+    build:
+      context: ./test_api
+    command: >
+      bash -c "python3 manage.py migrate && python3 manage.py loaddata engine/fixtures/products.json &&
+               python3 manage.py runserver 0.0.0.0:8000"
+    environment:
+      SECRET_KEY: 'g+tf7dqlus+*q8eib6x^9)@7*l(rf+^4kwf!_0v)d#xnq&kd5l'
+      DB_NAME: 'test_db'
+      DB_USER: 'root'
+    ports:
+      - "8000:8000"
+volumes:
+  db_data:
